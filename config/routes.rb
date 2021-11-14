@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
-  root to: 'pages#home'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: 'lists#index'
+
+  resources :lists, except: [:index] do
+    resources :bookmarks, only: [:new, :create, :destroy]
+  end
+
+  resources :animes, only: [:index, :show]
+  resources :voice_actors, only: [:index, :show]
+  resources :characters, only: [:index, :show]
+  resources :favorites, only: [:index]
 end

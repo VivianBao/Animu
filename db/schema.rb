@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_13_084544) do
+ActiveRecord::Schema.define(version: 2021_11_14_140716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2021_11_13_084544) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "favorite_id"
+    t.boolean "favorite"
     t.index ["favorite_id"], name: "index_animes_on_favorite_id"
   end
 
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(version: 2021_11_13_084544) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "favorite_id"
+    t.boolean "favorite"
     t.index ["favorite_id"], name: "index_characters_on_favorite_id"
   end
 
@@ -83,6 +85,8 @@ ActiveRecord::Schema.define(version: 2021_11_13_084544) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "favorite_id"
+    t.boolean "favorite"
+    t.string "image_url"
     t.index ["favorite_id"], name: "index_voice_actors_on_favorite_id"
   end
 
