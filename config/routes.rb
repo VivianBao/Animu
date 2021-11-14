@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  root to: 'lists#index'
+  # root to: 'lists#index'
+  # get '/new', to: 'lists#new', as: :new_list
+  # post '/', to: 'lists#create'
 
-  resources :lists, except: [:index] do
+  resources :lists do
     resources :bookmarks, only: [:new, :create, :destroy]
   end
 

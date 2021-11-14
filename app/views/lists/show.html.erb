@@ -1,2 +1,5 @@
-<h1>Lists#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
+<h1><%= @list.name %></h1>
+<% @list.animes.each do |anime| %>
+  <p><%= anime.title_jp %></p>
+  <p><%= anime.title_eng %></p>
+<% end %>

@@ -1,0 +1,9 @@
+<h1>Animu</h1>
+<h3>Create your anime lists!</h3>
+
+<h2>Your Anime List</h2>
+<% @lists.each do |list| %>
+  <p><%= list.name %></p>
+<% end %>
+
+<%= link_to 'Add new list', new_list_path %>
