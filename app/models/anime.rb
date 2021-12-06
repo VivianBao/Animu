@@ -2,7 +2,6 @@ class Anime < ApplicationRecord
   has_many :castings, dependent: :destroy
   has_many :appearances, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
-  belongs_to :favorite
 
   has_many :lists, through: :bookmarks
   has_many :voice_actors, through: :castings

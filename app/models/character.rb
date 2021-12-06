@@ -1,7 +1,6 @@
 class Character < ApplicationRecord
   has_many :appearances, dependent: :destroy
   has_many :voicings, dependent: :destroy
-  belongs_to :favorite
   has_many :voice_actors, through: :voicings
   has_many :animes, through: :appearances
 
