@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_14_140716) do
+ActiveRecord::Schema.define(version: 2021_12_06_022710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,9 +26,6 @@ ActiveRecord::Schema.define(version: 2021_11_14_140716) do
     t.integer "user_rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "favorite_id"
-    t.boolean "favorite"
-    t.index ["favorite_id"], name: "index_animes_on_favorite_id"
   end
 
   create_table "appearances", force: :cascade do |t|
@@ -64,9 +61,6 @@ ActiveRecord::Schema.define(version: 2021_11_14_140716) do
     t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "favorite_id"
-    t.boolean "favorite"
-    t.index ["favorite_id"], name: "index_characters_on_favorite_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -84,10 +78,7 @@ ActiveRecord::Schema.define(version: 2021_11_14_140716) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "favorite_id"
-    t.boolean "favorite"
     t.string "image_url"
-    t.index ["favorite_id"], name: "index_voice_actors_on_favorite_id"
   end
 
   create_table "voicings", force: :cascade do |t|
@@ -99,15 +90,12 @@ ActiveRecord::Schema.define(version: 2021_11_14_140716) do
     t.index ["voice_actor_id"], name: "index_voicings_on_voice_actor_id"
   end
 
-  add_foreign_key "animes", "favorites"
   add_foreign_key "appearances", "animes"
   add_foreign_key "appearances", "characters"
   add_foreign_key "bookmarks", "animes"
   add_foreign_key "bookmarks", "lists"
   add_foreign_key "castings", "animes"
   add_foreign_key "castings", "voice_actors"
-  add_foreign_key "characters", "favorites"
-  add_foreign_key "voice_actors", "favorites"
   add_foreign_key "voicings", "characters"
   add_foreign_key "voicings", "voice_actors"
 end
