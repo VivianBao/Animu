@@ -9,15 +9,39 @@ require 'json'
 require 'open-uri'
 
 puts 'Clearing Data...'
-# Anime.delete_all
-# Character.delete_all
-# VoiceActor.delete_all
+Anime.delete_all
+Character.delete_all
+VoiceActor.delete_all
 
 puts 'Generating New Data...'
+
+puts "Creating lists..."
+new_list = List.new(
+  name: 'Classic'
+)
+file = URI.open('https://cdn.myanimelist.net/images/anime/1404/98182.jpg?s=890ec3587370861a797eb6b38b2ef21a')
+new_list.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+new_list.save!
+
+new_list = List.new(
+  name: 'Childhood'
+)
+file = URI.open('https://cdn.myanimelist.net/images/anime/1658/95332.jpg?s=4ba04578f65fd23167b5dcc5c35acce2')
+new_list.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+new_list.save!
+
+new_list = List.new(
+  name: 'Big Cry'
+)
+file = URI.open('https://cdn.myanimelist.net/images/anime/1795/95088.jpg?s=9e24a139603a4e0ea8ea055a230b54d5')
+new_list.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+new_list.save!
+
 animes_url = 'https://api.jikan.moe/v3/top/anime/1'
 animes_serialized = URI.open(animes_url).read
 animes = JSON.parse(animes_serialized)
 
+puts "Creating anime/character/voice actors..."
 animes_list = animes['top']
 animes_list.each do |item|
   anime_id = item['mal_id']
@@ -99,7 +123,7 @@ animes_list.each do |item|
     end
   end
 end
-
+puts "#{List.all.count} lists generated!"
 puts "#{Anime.all.count} animes generated!"
 puts "#{Character.all.count} characters generated!"
 puts "#{VoiceActor.all.count} voice actors generated!"
