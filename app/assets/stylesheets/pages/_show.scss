@@ -1,0 +1,43 @@
+.anime-1, .anime-2{
+  width: 30%;
+  margin: 15px;
+}
+
+.anime-1{
+  .poster {
+   text-align: center;
+  }
+  h3 {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 0 0 3px rgb(155, 153, 153);
+  }
+  p{
+    margin: 5px;
+  }
+}
+
+.characters-container {
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  justify-items: center;
+  .character-card {
+    text-align: center;
+    width: 180px;
+  }
+  .profile {
+    width: 180px;
+    text-align: center;
+    img {
+      width: 180px;
+      height: 280px;
+    }
+  }
+  p {
+    margin: 5px;
+  }
+}
