@@ -1,2 +1,27 @@
-<h1>Animes#show</h1>
-<p>Find me in app/views/animes/show.html.erb</p>
+<%= render "shared/navbar" %>
+<div class="anime-container d-flex justify-content-center">
+  <div class="anime-1">
+    <h2><%= @anime.title_jp %></h2>
+    <h3><%= @anime.title_eng %></h3>
+    <div class="d-flex">
+      <div class="poster"><img src="<%= @anime.poster_url%>" alt="<%= @anime.title_eng%>'s poster"></div>
+      <div class="ml-3" style="align-self: end;">
+        <p><strong>Rating</strong>: <%= @anime.rating %></P>
+        <p><strong>Rank</strong>: <%= @anime.rank %></p>
+        <p><strong>Episodes</strong>: <%= @anime.episodes %></p>
+      </div>
+    </div>
+  </div>
+  <div class='anime-2'>
+    <p><strong>Summary</strong>: <%= @anime.description %></p>
+  </div>
+</div>
+<div style="width: 70%; margin: 20px auto;"><h2>Main Characters:</h2></div>
+<div class="characters-container">
+  <% @anime.characters.each do |character| %>
+  <div class="character-card">
+    <div class="profile"><img src="<%= character.image_url%>" alt="<%= character.name%>'s picture"></div>
+    <p><%= character.name %></p>
+  </div>
+  <% end %>
+</div>
