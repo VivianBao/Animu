@@ -1,0 +1,22 @@
+.anime-container {
+  width: 95%;
+  margin: 10px auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  justify-items: center;
+  column-gap: 10px;
+  row-gap: 25px;
+  .anime-card {
+    height: 300px;
+    width: 200px;
+    .anime-poster{
+      align-self: center;
+      height: 300px;
+      width: 200px;
+      img{
+        height: 300px;
+        width: 200px;
+      }
+    }
+  }
+}

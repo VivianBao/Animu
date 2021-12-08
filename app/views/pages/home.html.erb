@@ -1,2 +1,29 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/drz5wfo4e/image/upload/v1638987923/pexels-alex-knight-2816903_ukstra.jpg);">
+  <%= render "shared/navbar"%>
+  <div class="container">
+    <h1>Animu</h1>
+    <h3>Create your anime lists!</h3>
+  </div>
+</div>
+
+<h2>Your Anime List</h2>
+<% @lists.each do |list| %>
+  <p><%= list.name %></p>
+<% end %>
+
+<h2>Top 50 animes</h2>
+<div class="anime-container ">
+  <% @animes.each do |anime| %>
+    <div class="anime-card">
+      <div class="anime-poster">
+        <img src="<%= anime.poster_url%>" alt="<%= anime.title_eng%>'s poster">
+      </div>
+      <div class="anime-title d-none">
+        <p><%= anime.title_jp %></p>
+        <p><%= anime.title_eng %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to 'Add new list', new_list_path %>

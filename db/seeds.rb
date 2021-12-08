@@ -9,12 +9,11 @@ require 'json'
 require 'open-uri'
 
 puts 'Clearing Data...'
-Anime.delete_all
-Character.delete_all
-VoiceActor.delete_all
+# Anime.delete_all
+# Character.delete_all
+# VoiceActor.delete_all
 
 puts 'Generating New Data...'
-favorite_library = Favorite.create
 animes_url = 'https://api.jikan.moe/v3/top/anime/1'
 animes_serialized = URI.open(animes_url).read
 animes = JSON.parse(animes_serialized)
@@ -25,7 +24,7 @@ animes_list.each do |item|
   anime_url = "https://api.jikan.moe/v3/anime/#{anime_id}"
   anime_serialized = URI.open(anime_url).read
   anime = JSON.parse(anime_serialized)
-  new_anime = Anime.new(
+  new_anime = Anime.create!(
     title_jp: anime['title_japanese'],
     title_eng: anime['title'],
     description: anime['synopsis'],
@@ -33,11 +32,8 @@ animes_list.each do |item|
     rating: anime['score'],
     rank: anime['rank'],
     episodes: anime['episodes'],
-    user_rating: 0,
-    favorite: false
+    user_rating: 0
   )
-  new_anime.favorite = favorite_library
-  new_anime.save
 
   character_staff_url = "https://api.jikan.moe/v3/anime/#{anime_id}/characters_staff"
   character_staff_serialized = URI.open(character_staff_url).read
@@ -59,12 +55,10 @@ animes_list.each do |item|
         )
       # character does not exist
       else
-        new_character = Character.new(
+        new_character = Character.create!(
           name: character['name'],
           image_url: character['image_url']
         )
-        new_character.favorite = favorite_library
-        new_character.save
         Appearance.create(
           anime_id: new_anime.id,
           character_id: new_character.id
@@ -89,7 +83,6 @@ animes_list.each do |item|
                 name: voice_actor['name'],
                 image_url: voice_actor['image_url']
               )
-              new_voice_actor.favorite = favorite_library
               new_voice_actor.save
               Voicing.create(
                 character_id: new_character.id,
