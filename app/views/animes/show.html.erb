@@ -20,7 +20,9 @@
 <div class="characters-container">
   <% @anime.characters.each do |character| %>
   <div class="character-card">
-    <div class="profile"><img src="<%= character.image_url%>" alt="<%= character.name%>'s picture"></div>
+    <%= link_to character_path(character) do %>
+      <div class="profile"><img src="<%= character.image_url%>" alt="<%= character.name%>'s picture"></div>
+    <% end %>
     <p><%= character.name %></p>
   </div>
   <% end %>
