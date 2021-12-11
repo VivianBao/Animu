@@ -1,2 +1,15 @@
-<h1>Characters#show</h1>
-<p>Find me in app/views/characters/show.html.erb</p>
+<h2><%= @character.name %></h2>
+
+<img src="<%= @character.image_url%>" alt="<%= @character.name%>'s picture">
+
+<% if @character.voice_actors.count == 1 %>
+  <p>Voice Actor/Actress: <%=@character.voice_actors.first%></p>
+<% else %>
+  <p>Voice Actors/Actresses:
+    <ul>
+      <% @character.voice_actors.each do |voice_actor| %>
+        <li><%= voice_actor.name %></li>
+      <% end %>
+    </ul>
+  </p>
+<% end %>
