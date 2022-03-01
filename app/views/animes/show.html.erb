@@ -1,29 +1,36 @@
 <%= render "shared/navbar" %>
-<div class="anime-container d-flex justify-content-center">
-  <div class="anime-1">
+<div class="anime-container">
+  <div class="anime-title">
     <h2><%= @anime.title_jp %></h2>
     <h3><%= @anime.title_eng %></h3>
-    <div class="d-flex">
-      <div class="poster"><img src="<%= @anime.poster_url%>" alt="<%= @anime.title_eng%>'s poster"></div>
-      <div class="ml-3" style="align-self: end;">
-        <p><strong>Rating</strong>: <%= @anime.rating %></P>
-        <p><strong>Rank</strong>: <%= @anime.rank %></p>
-        <p><strong>Episodes</strong>: <%= @anime.episodes %></p>
-      </div>
+  </div>
+<div class="anime-info-container">
+  <div class="info-left">
+    <div class="poster"><img src="<%= @anime.poster_url%>" alt="<%= @anime.title_eng%>'s poster"></div>
+    <div class="stats">
+      <p><strong>Rating</strong>: <%= @anime.rating %></P>
+      <p><strong>Rank</strong>: <%= @anime.rank %></p>
+      <p><strong>Episodes</strong>: <%= @anime.episodes %></p>
     </div>
   </div>
-  <div class='anime-2'>
-    <p><strong>Summary</strong>: <%= @anime.description %></p>
+  <div class="info-right">
+    <div class='anime-summary'>
+      <h4>Summary</h4>
+      <p><%= @anime.description %></p>
+    </div>
+    <h4>Main Characters:</h4>
+    <div class="characters-container">
+      <% @anime.characters.each do |character| %>
+      <div class="character-card">
+        <%= link_to character_path(character) do %>
+          <div class="profile">
+            <div class="pic"><img src="<%= character.image_url%>" alt="<%= character.name%>'s picture"></div>
+            <p><%= character.name %></p>
+          </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
   </div>
 </div>
-<div style="width: 70%; margin: 20px auto;"><h2>Main Characters:</h2></div>
-<div class="characters-container">
-  <% @anime.characters.each do |character| %>
-  <div class="character-card">
-    <%= link_to character_path(character) do %>
-      <div class="profile"><img src="<%= character.image_url%>" alt="<%= character.name%>'s picture"></div>
-    <% end %>
-    <p><%= character.name %></p>
-  </div>
-  <% end %>
 </div>
