@@ -1,15 +1,16 @@
 .banner {
   background-size: cover;
   background-position: center;
-  height: 55vh;
+  height: 50vh;
   background-position: right 15% bottom 25%;
-  opacity: 75%;
+  opacity: 80%;
+  z-index: -1;
   .container{
     // padding: 150px 0;
     margin-top: calc(55vh/4);
     width: 300px;
     height: 150px;
-    background-color: rgba(128, 128, 128, 0.3);
+    background-color: rgba(128, 128, 128, 0.4);
     text-align: center;
     display: flex;
     flex-direction: column;
