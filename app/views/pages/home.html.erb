@@ -7,21 +7,21 @@
 </div>
 <div class="body-frame">
   <div class="list-container">
-    <div class="title d-flex">
-      <h2>Your Anime List</h2>
+    <div class="btn-container">
+      <%# <h2>Collections</h2> %>
       <%= link_to new_list_path do %>
-        <i class="fas fa-plus"></i>
+        Create New List
       <% end %>
     </div>
     <div class="list-cards">
       <% @lists.each do |list| %>
-        <div class="list-card" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(<%= list.photo.attached? ? "#{cl_image_path(list.photo.key)}" : "http://source.unsplash.com/featured/?#{list.name}&#{rand(1000)}"%>)">
+        <div class="list-card" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= list.photo.attached? ? "#{cl_image_path(list.photo.key)}" : "http://source.unsplash.com/featured/?#{list.name}&#{rand(1000)}"%>)">
           <%= link_to list.name, list_path(list) %>
         </div>
       <% end %>
     </div>
   </div>
-  <div class="title"><h2>Top 50 Anime</h2></div>
+  <div class="title"><h2>Recommandation</h2></div>
   <div class="animes-container ">
     <% @animes.each do |anime| %>
       <div class="anime-card">
