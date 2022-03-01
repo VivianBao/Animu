@@ -21,15 +21,14 @@
       <% end %>
     </div>
   </div>
-
   <div class="title"><h2>Top 50 Anime</h2></div>
   <div class="animes-container ">
     <% @animes.each do |anime| %>
       <div class="anime-card">
         <div class="anime-poster">
-        <%= link_to anime_path(anime) do %>
-          <img src="<%= anime.poster_url%>" alt="<%= anime.title_eng%>'s poster">
-        <% end %>
+          <%= link_to anime_path(anime) do %>
+            <img src="<%= anime.poster_url%>" alt="<%= anime.title_eng%>'s poster">
+          <% end %>
         </div>
         <div class="anime-title d-none">
           <p><%= anime.title_jp %></p>

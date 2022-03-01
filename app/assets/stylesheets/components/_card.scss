@@ -1,40 +1,45 @@
-.animes-container {
-  width: 95%;
+.body-frame{
+  width: 80%;
   margin: 10px auto;
+  .title{
+    margin: 40px 0 20px 0;
+  }
+}
+
+.animes-container {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   column-gap: 10px;
-  row-gap: 25px;
+  row-gap: 40px;
   .anime-card {
-    height: 300px;
-    width: 200px;
+    // height: 300px;
+    // width: 220px;
     .anime-poster{
       align-self: center;
-      height: 300px;
-      width: 200px;
+      // height: 300px;
+      // width: 220px;
       img{
-        height: 300px;
-        width: 200px;
+        height: 320px;
+        width: 220px;
+        border-radius: 10px;
       }
     }
   }
 }
 .list-container{
   margin: 0 auto;
-  width: 80%;
   display: flex;
   flex-direction:column;
-  // align-items: center;
+  align-items: left;
   // justify-content: center;
-  .title{
-    margin: 40px 0 0 0;
-  }
 }
+
 .list-cards {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 10px;
   .list-card {
     height:220px;
