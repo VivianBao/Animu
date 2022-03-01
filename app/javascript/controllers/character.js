@@ -1,17 +1,18 @@
-const list = document.querySelector('#results');
+const list = document.querySelector('#character');
 
-const insertCharacter = (data) => {
+const insertCharacterInfo = (data) => {
   data.Search.forEach((result) => {
-    const character = `<li>
-      <img src="${result.Poster}" alt="" />
-      <p>${result.Title}</p>
-    </li>`;
-    list.insertAdjacentHTML('beforeend', character);
+    result
+    // const character = `<li>
+    //   <img src="${result.Poster}" alt="" />
+    //   <p>${result.Title}</p>
+    // </li>`;
+    // list.insertAdjacentHTML('beforeend', character);
   });
 };
 
-const fetchMovies = (query) => {
-  fetch(`http://www.omdbapi.com/?s=${query}&apikey=adf1f2d7`)
+const fetchCharacterInfo = (id) => {
+  fetch(`https://api.jikan.moe/v3/character/${id}`)
     .then(response => response.json())
-    .then(insertMovies);
+    .then(insertCharacterInfo);
 };
