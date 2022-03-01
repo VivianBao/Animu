@@ -6,30 +6,29 @@
   </div>
 </div>
 <div class="body-frame">
-  <div class="title d-flex">
-  <h2>Your Anime List</h2>
-  <%= link_to new_list_path do %>
-    <i class="fas fa-plus"></i>
-  <% end %>
-  </div>
-  <div class="anime-list-container d-flex">
-    <div class="cards">
-    <% @lists.each do |list| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? "#{cl_image_path(list.photo.key)}" : "http://source.unsplash.com/featured/?#{list.name}&#{rand(1000)}"%>)">
-        <%= link_to list.name, list_path(list) %>
-      </div>
-    <% end %>
+  <div class="list-container">
+    <div class="title d-flex">
+      <h2>Your Anime List</h2>
+      <%= link_to new_list_path do %>
+        <i class="fas fa-plus"></i>
+      <% end %>
+    </div>
+    <div class="list-cards">
+      <% @lists.each do |list| %>
+        <div class="list-card" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(<%= list.photo.attached? ? "#{cl_image_path(list.photo.key)}" : "http://source.unsplash.com/featured/?#{list.name}&#{rand(1000)}"%>)">
+          <%= link_to list.name, list_path(list) %>
+        </div>
+      <% end %>
     </div>
   </div>
-
   <div class="title"><h2>Top 50 Anime</h2></div>
   <div class="animes-container ">
     <% @animes.each do |anime| %>
       <div class="anime-card">
         <div class="anime-poster">
-        <%= link_to anime_path(anime) do %>
-          <img src="<%= anime.poster_url%>" alt="<%= anime.title_eng%>'s poster">
-        <% end %>
+          <%= link_to anime_path(anime) do %>
+            <img src="<%= anime.poster_url%>" alt="<%= anime.title_eng%>'s poster">
+          <% end %>
         </div>
         <div class="anime-title d-none">
           <p><%= anime.title_jp %></p>

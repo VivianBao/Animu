@@ -1,0 +1,28 @@
+$sm_width: 576px;
+$width: 819px;
+$md_width: 900px;
+$lg_width: 1300px;
+
+@mixin sm_mobile {
+  @media (max-width: #{$sm_width}){
+    @content
+  }
+};
+
+@mixin mobile {
+  @media (max-width: #{$width}){
+    @content
+  }
+};
+
+@mixin md_mobile {
+  @media (max-width: #{$md_width}){
+    @content
+  }
+};
+
+@mixin lg_mobile {
+  @media (max-width: #{$lg_width}){
+    @content
+  }
+};

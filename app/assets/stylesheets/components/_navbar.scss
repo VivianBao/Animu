@@ -1,24 +1,15 @@
-.navbar-lewagon {
+.navbar {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
+  width: 100vw;
 
   i {
     font-size: 25px;
     margin: 10px;
     color: rgb(113, 143, 226);
   }
-
-  ul {
-    align-items: center;
-  }
-}
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
 }

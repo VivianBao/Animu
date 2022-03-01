@@ -1,37 +1,108 @@
+@import "../config/_media.scss";
+
+.body-frame{
+  width: 75%;
+  margin: 0 auto;
+  @include lg_mobile{
+    width: 80%;
+  }
+  @include md_mobile{
+    width: 85%;
+  }
+  @include sm_mobile{
+    width: 85%;
+  }
+  .title{
+    margin: 40px 0 30px 0;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
+}
+
 .animes-container {
-  width: 95%;
-  margin: 10px auto;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   column-gap: 10px;
-  row-gap: 25px;
+  row-gap: 40px;
+
+  @include lg_mobile{
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 50px;
+  }
+  @include md_mobile{
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+  }
+
+  @include mobile{
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
+
+  @include sm_mobile{
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+  }
+
   .anime-card {
-    height: 300px;
-    width: 200px;
+    // height: 300px;
+    // width: 220px;
     .anime-poster{
       align-self: center;
-      height: 300px;
-      width: 200px;
+      // height: 300px;
+      // width: 220px;
       img{
-        height: 300px;
-        width: 200px;
+        height: 320px;
+        width: 220px;
+        border-radius: 10px;
+        @include sm_mobile{
+          height: 220px;
+          width: 150px;
+        }
       }
     }
   }
 }
-.anime-list-container{
+.list-container{
   margin: 0 auto;
-  width: 95%;
+  // display: flex;
+  // flex-direction:column;
+  // align-items: center;
 }
 
-.cards {
+.list-cards {
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 20px;
-  .card-category {
-    height:200px;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+
+  @include lg_mobile{
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 50px;
+  }
+
+  @include md_mobile{
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+  }
+
+  @include mobile{
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
+
+  @include sm_mobile{
+    grid-template-columns: 1fr;
+  }
+
+  .list-card {
+    height:220px;
     width: 220px;
+    border-radius: 10px;
+    cursor: pointer;
     a {
       display: block;
       text-decoration: none;
@@ -42,40 +113,8 @@
       margin-top: 90px;
       text-shadow: 0 0 2px rgb(176, 173, 173);
     }
-  }
-}
-
-// Smallest device
-@media (min-width: 100px) and (max-width: 575px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
-}
-
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-  .cards {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-  .cards {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  .cards {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-  .cards {
-    grid-template-columns: 1fr 1fr 1fr;
+    &:hover{
+      background-color: rgba(0, 0, 0, 0.5)
+    }
   }
 }
