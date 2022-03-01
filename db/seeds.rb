@@ -81,8 +81,8 @@ animes_list.each do |item|
       else
         new_character = Character.create!(
           name: character['name'],
-          image_url: character['image_url']
-          # mal_id: character['mal_id']
+          image_url: character['image_url'],
+          mal_id: character['mal_id']
         )
         Appearance.create(
           anime_id: new_anime.id,
