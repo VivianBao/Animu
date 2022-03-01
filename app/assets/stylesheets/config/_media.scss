@@ -1,0 +1,15 @@
+$sm_width: 576px;
+$md_width: 768px;
+
+
+@mixin sm_mobile {
+  @media (max-width: #{$sm_width}){
+    @content
+  }
+};
+
+@mixin md_mobile {
+  @media (max-width: #{$md_width}){
+    @content
+  }
+};
