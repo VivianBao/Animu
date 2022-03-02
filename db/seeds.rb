@@ -9,9 +9,24 @@ require 'json'
 require 'open-uri'
 
 puts 'Clearing Data...'
+Appearance.delete_all
+puts 'Apearances deleted...'
+Bookmark.delete_all
+puts 'Bookmarks deleted...'
+Favorite.delete_all
+puts 'Favorites deleted...'
+Casting.delete_all
+puts 'Castings deleted...'
+Voicing.delete_all
+puts 'Voicings deleted...'
+List.delete_all
+puts 'Lists deleted...'
 Anime.delete_all
+puts 'Animes deleted...'
 Character.delete_all
+puts 'Characters deleted...'
 VoiceActor.delete_all
+puts 'VoiceActors deleted...'
 
 puts 'Generating New Data...'
 

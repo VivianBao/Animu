@@ -3,3 +3,7 @@
   <p><%= anime.title_jp %></p>
   <p><%= anime.title_eng %></p>
 <% end %>
+
+<%= link_to new_list_bookmark_path(@list) do %>
+  <p>Add anime to list</p>
+<% end %>

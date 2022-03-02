@@ -1,0 +1,21 @@
+.form-container{
+  width: 50vw;
+  height: 60vh;
+  margin:  20vh auto;
+  background-position: 50% 50%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h2{
+    text-align: center;
+  }
+  .submit-btn{
+    display: block;
+    width: 100px;
+    margin: 20px auto 0 auto;
+    background-color: $purple;
+    color: white;
+  }
+}
