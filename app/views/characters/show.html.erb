@@ -1,17 +1,44 @@
-<h2><%= @character.name %></h2>
-
-<img src="<%= @character.image_url%>" alt="<%= @character.name%>'s picture">
-
-<% if @character.voice_actors.count == 1 %>
-  <p>Voice Actor/Actress: <%=@character.voice_actors.first%></p>
-<% else %>
-  <p>Voice Actors/Actresses:
-    <ul>
-      <% @character.voice_actors.each do |voice_actor| %>
-        <li><%= voice_actor.name %></li>
-      <% end %>
-    </ul>
-  </p>
-<% end %>
-
-<div id="character"></div>
+<%= render "shared/navbar" %>
+<div class="anime-container">
+  <div class="anime-title">
+    <h2><%= @character.name %></h2>
+  </div>
+  <div class="anime-info-container character">
+      <div class="info-left">
+        <img src="<%= @character.image_url%>" alt="<%= @character.name%>'s picture">
+        <div class="voice-actors">
+          <% if @character.voice_actors.count == 1 %>
+            <p>Voice Actor/Actress:</p>
+            <ul>
+              <li>
+                <%=@character.voice_actors.first.name%>
+              </li>
+            </ul>
+          <% else %>
+            <p>Voice Actors/Actresses:</p>
+              <ul>
+                <% @character.voice_actors.each do |voice_actor| %>
+                  <li><%= voice_actor.name %></li>
+                <% end %>
+              </ul>
+          <% end %>
+        </div>
+      </div>
+      <div class="info-right">
+        <div>
+          <h5>Apearances:</h5>
+          <div class="animes-container character">
+            <% @appearances.each do |casting| %>
+              <div class="anime-card">
+                <div class="anime-poster">
+                  <%= link_to anime_path(casting.anime) do %>
+                    <img src="<%= casting.anime.poster_url%>" alt="<%= casting.anime.title_eng%>'s poster">
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

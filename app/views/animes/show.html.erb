@@ -4,33 +4,33 @@
     <h2><%= @anime.title_jp %></h2>
     <h3><%= @anime.title_eng %></h3>
   </div>
-<div class="anime-info-container">
-  <div class="info-left">
-    <div class="poster"><img src="<%= @anime.poster_url%>" alt="<%= @anime.title_eng%>'s poster"></div>
-    <div class="stats">
-      <p><strong>Rating</strong>: <%= @anime.rating %></P>
-      <p><strong>Rank</strong>: <%= @anime.rank %></p>
-      <p><strong>Episodes</strong>: <%= @anime.episodes %></p>
+  <div class="anime-info-container">
+    <div class="info-left">
+      <div class="poster"><img src="<%= @anime.poster_url%>" alt="<%= @anime.title_eng%>'s poster"></div>
+      <div class="stats">
+        <p><strong>Rating</strong>: <%= @anime.rating %></P>
+        <p><strong>Rank</strong>: <%= @anime.rank %></p>
+        <p><strong>Episodes</strong>: <%= @anime.episodes %></p>
+      </div>
     </div>
-  </div>
-  <div class="info-right">
-    <div class='anime-summary'>
-      <h4>Summary</h4>
-      <p><%= @anime.description %></p>
-    </div>
-    <h4>Main Characters:</h4>
-    <div class="characters-container">
-      <% @anime.characters.each do |character| %>
-      <div class="character-card">
-        <%= link_to character_path(character) do %>
-          <div class="profile">
-            <div class="pic"><img src="<%= character.image_url%>" alt="<%= character.name%>'s picture"></div>
-            <p><%= character.name %></p>
-          </div>
+    <div class="info-right">
+      <div class='anime-summary'>
+        <h4>Summary</h4>
+        <p><%= @anime.description %></p>
+      </div>
+      <h4>Main Characters:</h4>
+      <div class="characters-container">
+        <% @anime.characters.each do |character| %>
+        <div class="character-card">
+          <%= link_to character_path(character) do %>
+            <div class="profile">
+              <div class="pic"><img src="<%= character.image_url%>" alt="<%= character.name%>'s picture"></div>
+              <p><%= character.name %></p>
+            </div>
+          <% end %>
+        </div>
         <% end %>
       </div>
-      <% end %>
     </div>
   </div>
-</div>
 </div>
