@@ -2,7 +2,20 @@
 <div class="form-container" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(https://res.cloudinary.com/drz5wfo4e/image/upload/v1646215536/denys-nevozhai-D68ADLeMh5Q-unsplash_cqihzg.jpg);">
   <h2>Add Anime to <%=@list.name%></h2>
   <%= simple_form_for([@list, @bookmark]) do |f|%>
-    <%= f.association :anime, label_method: :title_jp, value_method: :id,  prompt: "Choose an Anime" %>
+   <!-- <% if f.object.errors.any? %>
+      <div id="error_explanation">
+      <div class="alert alert-error">
+        The form contains <%= pluralize(f.object.errors.count, "error") %>.
+      </div>
+      <ul>
+      <% f.object.errors.full_messages.each do |msg| %>
+        <li>* <%= msg %></li>
+      <% end %>
+    </ul>
+    </div>
+    <% end %> -->
+    <%= f.association :anime, label_method: :title_jp, value_method: :id,  prompt: "Choose an Anime"%>
+    <%= f.input :content, label: "Add a bookmark!" %>
     <%= f.button :submit, "Add", class: 'submit-btn' %>
   <% end %>
 </div>
