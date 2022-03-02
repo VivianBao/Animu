@@ -4,7 +4,9 @@
     <h2><%= @anime.title_jp %></h2>
     <h3><%= @anime.title_eng %></h3>
     <% if @anime.bookmarks.first %>
-      <p>Personal bookmark: <%=@anime.bookmarks.first.content%></p>
+      <%if @anime.bookmarks.first.content %>
+        <p>Personal bookmark: <%=@anime.bookmarks.first.content%></p>
+      <% end %>
     <% end %>
   </div>
   <div class="anime-info-container">
