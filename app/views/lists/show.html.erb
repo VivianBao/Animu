@@ -1,9 +1,37 @@
-<h1><%= @list.name %></h1>
-<% @list.animes.each do |anime| %>
-  <p><%= anime.title_jp %></p>
-  <p><%= anime.title_eng %></p>
-<% end %>
+<div class="banner list" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url( <%="http://source.unsplash.com/featured/?japan&#{rand(1000)}"%> );">
+ <div class="navbar">
+    <%= link_to root_path do %>
+      <i class="fas fa-ghost"></i>
+    <% end %>
 
-<%= link_to new_list_bookmark_path(@list) do %>
-  <p>Add anime to list</p>
-<% end %>
+    <div class="btn-container list">
+      <%= link_to new_list_bookmark_path(@list) do %>
+        Add anime to list
+      <% end %>
+    </div>
+  </div>
+  <div class="container">
+    <h1><%= @list.name %></h1>
+  </div>
+</div>
+<div class="body-frame">
+  <div class="animes-container list">
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="anime-card">
+        <div class="anime-poster">
+          <%= link_to anime_path(bookmark.anime) do %>
+            <img src="<%= bookmark.anime.poster_url%>" alt="<%= bookmark.anime.title_eng%>'s poster">
+          <% end %>
+          <%= link_to list_bookmark_path(bookmark), method: :delete do %>
+            <%# <i class="fa-solid fa-trash-can"></i> %>
+            <i class="fas fa-trash"></i>
+          <% end %>
+        </div>
+        <div class="anime-title d-none">
+          <p><%= bookmark.anime.title_jp %></p>
+          <p><%= bookmark.anime.title_eng %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
