@@ -30,36 +30,18 @@ puts 'VoiceActors deleted...'
 
 puts 'Generating New Data...'
 
-puts "Creating lists..."
-new_list = List.new(
-  name: 'Classic'
-)
-file = URI.open('https://cdn.myanimelist.net/images/anime/1404/98182.jpg?s=890ec3587370861a797eb6b38b2ef21a')
-new_list.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
-new_list.save!
-
-new_list = List.new(
-  name: 'Childhood'
-)
-file = URI.open('https://cdn.myanimelist.net/images/anime/1658/95332.jpg?s=4ba04578f65fd23167b5dcc5c35acce2')
-new_list.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
-new_list.save!
-
-new_list = List.new(
-  name: 'Big Cry'
-)
-file = URI.open('https://cdn.myanimelist.net/images/anime/1795/95088.jpg?s=9e24a139603a4e0ea8ea055a230b54d5')
-new_list.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
-new_list.save!
-
 animes_url = 'https://api.jikan.moe/v3/top/anime/1'
 animes_serialized = URI.open(animes_url).read
 animes = JSON.parse(animes_serialized)
 
 puts "Creating anime/character/voice actors..."
 animes_list = animes['top']
+anime_ids = [5114, 30, 47, 170, 249, 4898, 199, 164, 6811, 22_043, 33_352, 28_851, 41_025, 457, 36_653, 47_778]
 animes_list.each do |item|
-  anime_id = item['mal_id']
+  anime_ids << item['mal_id']
+end
+
+anime_ids.uniq.each do |anime_id|
   anime_url = "https://api.jikan.moe/v3/anime/#{anime_id}"
   anime_serialized = URI.open(anime_url).read
   anime = JSON.parse(anime_serialized)
@@ -71,7 +53,8 @@ animes_list.each do |item|
     rating: anime['score'],
     rank: anime['rank'],
     episodes: anime['episodes'],
-    user_rating: 0
+    user_rating: 0,
+    mal_id: anime_id
   )
 
   character_staff_url = "https://api.jikan.moe/v3/anime/#{anime_id}/characters_staff"
@@ -143,3 +126,70 @@ puts "#{List.all.count} lists generated!"
 puts "#{Anime.all.count} animes generated!"
 puts "#{Character.all.count} characters generated!"
 puts "#{VoiceActor.all.count} voice actors generated!"
+
+puts "Creating lists..."
+new_list = List.new(
+  name: 'Classic'
+)
+file = URI.open('https://cdn.myanimelist.net/images/anime/1404/98182.jpg?s=890ec3587370861a797eb6b38b2ef21a')
+new_list.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+new_list.save!
+
+ids = [5114, 30, 47, 170]
+ids.each do |anime_id|
+  Bookmark.create!(
+    # content: '',
+    list: new_list,
+    anime: Anime.find_by(mal_id: anime_id)
+  )
+end
+
+new_list = List.new(
+  name: 'Childhood'
+)
+file = URI.open('https://cdn.myanimelist.net/images/anime/6/79597.jpg?s=1f170071bc9a54ce2ba3c0d8c7aa6927')
+new_list.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+new_list.save!
+
+ids = [249, 4898, 199, 164, 6811, 22_043]
+ids.each do |anime_id|
+  Bookmark.create!(
+    # content: '',
+    list: new_list,
+    anime: Anime.find_by(mal_id: anime_id)
+  )
+end
+
+new_list = List.new(
+  name: 'Big Cry'
+)
+file = URI.open('https://cdn.myanimelist.net/images/anime/1795/95088.jpg?s=9e24a139603a4e0ea8ea055a230b54d5')
+new_list.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+new_list.save!
+
+ids = [33_352, 28_851, 41_025]
+ids.each do |anime_id|
+  Bookmark.create!(
+    # content: '',
+    list: new_list,
+    anime: Anime.find_by(mal_id: anime_id)
+  )
+end
+
+new_list = List.new(
+  name: 'To Watch'
+)
+file = URI.open('https://cdn.myanimelist.net/images/anime/2/73862.jpg?s=d976f75f480430a0c9fde4455696131d')
+new_list.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+new_list.save!
+
+ids = [457, 36_653, 47_778]
+ids.each do |anime_id|
+  Bookmark.create!(
+    # content: '',
+    list: new_list,
+    anime: Anime.find_by(mal_id: anime_id)
+  )
+end
+puts "#{List.all.count} lists generated!"
+puts "#{Bookmark.all.count} bookmarks generated!"
