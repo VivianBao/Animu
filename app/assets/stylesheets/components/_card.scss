@@ -95,7 +95,8 @@
   display: grid;
   justify-items: center;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 10px;
+  column-gap: 10px;
+  row-gap: 40px;
   @include lg_mobile{
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 50px;

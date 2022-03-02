@@ -1,0 +1,49 @@
+.banner.list{
+  height: 32vh;
+  background-position: 20%;
+}
+
+.btn-container.list{
+  margin: 0;
+  a {
+    font-size: 15px;
+  }
+}
+
+
+.animes-container.list{
+  margin-top: 100px;
+  transition: all 0.5s ease;
+  .anime-poster{
+    position: relative;
+    i{
+      position: absolute;
+      color: $purple;
+      top: 10px;
+      left: 10px;
+      font-size: 20px;
+      z-index: -1;
+      // transition: all 0.8s ease;
+      &:hover{
+        color: $dark-purple;
+        transition: all 0.8s ease;
+        font-size: 25px;
+        .anime-poster{
+          // transition: all 0.5s ease;
+          transform: scale(1.1);
+          opacity: 80%;
+        }
+      }
+    }
+    &:hover{
+      i{
+        z-index: 3;
+        transition: all 0.5s ease;
+        transform: scale(1.05);
+        top: 5px;
+        left: 5px;
+      }
+    }
+
+  }
+}
