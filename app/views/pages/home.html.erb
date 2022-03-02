@@ -15,7 +15,7 @@
     </div>
     <div class="list-cards">
       <% @lists.each do |list| %>
-        <div class="list-card" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= list.photo.attached? ? "#{cl_image_path(list.photo.key)}" : "http://source.unsplash.com/featured/?#{list.name}&#{rand(1000)}"%>)">
+        <div class="list-card" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= list.photo.attached? ? "#{cl_image_path(list.photo.key)}" : "http://source.unsplash.com/featured/?bakcgroundcolor&#{rand(1000)}"%>)">
           <%= link_to list.name, list_path(list) %>
         </div>
       <% end %>
