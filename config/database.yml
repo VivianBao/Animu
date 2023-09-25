@@ -20,6 +20,13 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
+#   host: postgres
+#   username: <%= Rails.application.credentials.dig(:db, :username) %>
+#   password: <%= Rails.application.credentials.dig(:db, :password) %>
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
